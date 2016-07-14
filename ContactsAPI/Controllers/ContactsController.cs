@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ContactsAPI.Models;
+using ContactsAPI.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,9 +12,10 @@ namespace ContactsAPI.Controllers
     public class ContactsController : ApiController
     {
         // GET: api/Contacts
-        public IEnumerable<string> Get()
+        public IEnumerable<Contact> Get()
         {
-            return new string[] { "value1", "value2" };
+            var repository = new ContactsRepository();
+            return repository.GetContacts();
         }
 
         // GET: api/Contacts/5

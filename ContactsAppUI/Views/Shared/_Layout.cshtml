@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html ng-app="contactsApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts App</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular_1_router.js"></script>
+    <script src="~/App/app.js"></script>
+    <script src="~/App/ContactsApp/contactsAppComponent.js"></script>
+    <script src="~/App/ContactsList/contactsListComponent.js"></script>
+    <script src="~/App/NewContact/newContactComponent.js"></script>
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

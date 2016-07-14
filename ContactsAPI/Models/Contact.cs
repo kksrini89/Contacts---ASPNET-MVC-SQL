@@ -10,11 +10,6 @@ namespace ContactsAPI.Models
         public string Name { get; set; }
         public double Mobile { get; set; }
         public string Relationship { get; set; }
-        public Address Address { get; set; }
-
-        public Contact()
-        {
-            Address = new Address();
-        }
+        public Address Address { get; set; }        
     }
 }
