@@ -1,0 +1,14 @@
+﻿body {
+    padding: 70px;
+    font-family: 'Ubuntu Mono', sans-serif;
+}
+
+/*Hides the input spinner icons on Number field*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#newContact-section {
+    padding: 5%;
+}
