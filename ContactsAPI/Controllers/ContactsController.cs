@@ -1,42 +1,51 @@
 ﻿using ContactsAPI.Models;
 using ContactsAPI.Repository;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ContactsAPI.Controllers
 {
     public class ContactsController : ApiController
     {
-        // GET: api/Contacts
+        ContactRepository repository = null;
+
+        #region API Methods
+
+        // GET api/contact
         public IEnumerable<Contact> Get()
         {
-            var repository = new ContactsRepository();
+            repository = new ContactRepository();
             return repository.GetContacts();
         }
 
-        // GET: api/Contacts/5
-        public string Get(int id)
+        // GET api/contact/5
+        public Contact Get(int id)
         {
-            return "value";
+            repository = new ContactRepository();
+            return repository.GetContact(id);
         }
 
-        // POST: api/Contacts
-        public void Post([FromBody]string value)
+        // POST api/contact
+        public void Post([FromBody]Contact value)
         {
+            repository = new ContactRepository();
+            repository.SaveContact(value);
         }
 
-        // PUT: api/Contacts/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/contact/5
+        public void Put(int id, [FromBody]Contact value)
         {
+            repository = new ContactRepository();
+            repository.UpdateContact(id, value);
         }
 
-        // DELETE: api/Contacts/5
+        // DELETE api/contact/5
         public void Delete(int id)
         {
+            repository = new ContactRepository();
+            repository.DeleteContact(id);
         }
+
+        #endregion
     }
 }
