@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace ContactsAPI.Controllers
 {
+    [RoutePrefix("api/contact")]
     public class ContactsController : ApiController
     {
         ContactRepository repository = null;
@@ -12,6 +13,8 @@ namespace ContactsAPI.Controllers
         #region API Methods
 
         // GET api/contact
+        [Route("getall")]
+        [HttpGet]
         public IEnumerable<Contact> Get()
         {
             repository = new ContactRepository();
@@ -19,6 +22,8 @@ namespace ContactsAPI.Controllers
         }
 
         // GET api/contact/5
+        [Route("get/{id}")]
+        [HttpGet]
         public Contact Get(int id)
         {
             repository = new ContactRepository();
@@ -26,6 +31,8 @@ namespace ContactsAPI.Controllers
         }
 
         // POST api/contact
+        [Route("save")]
+        [HttpPost]
         public void Post([FromBody]Contact value)
         {
             repository = new ContactRepository();
@@ -33,6 +40,8 @@ namespace ContactsAPI.Controllers
         }
 
         // PUT api/contact/5
+        [Route("put/{id}")]
+        [HttpPut]
         public void Put(int id, [FromBody]Contact value)
         {
             repository = new ContactRepository();
@@ -40,6 +49,8 @@ namespace ContactsAPI.Controllers
         }
 
         // DELETE api/contact/5
+        [Route("delete/{id}")]
+        [HttpGet,HttpDelete]
         public void Delete(int id)
         {
             repository = new ContactRepository();
