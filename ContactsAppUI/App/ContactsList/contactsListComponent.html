@@ -1,1 +1,14 @@
 ﻿<h2>Hi Contacts List Page!!!...</h2>
+
+<!--<form ng-submit="model.search()">
+    <input type="text" placeholder="Search Contact Name" />
+    <input type="submit" value="Search" />
+</form>-->
+
+<div ng-repeat="item in  model.contacts track by $index">
+    <div style="border:1px solid #1792e5;padding:5px;margin:5px;">
+        <h5>{{item.name}}</h5>
+        <span>{{item.mobileNumber}}</span>
+        <span>{{item.relationship}}</span>
+    </div>
+</div>
