@@ -177,6 +177,7 @@
     <Content Include="App\ContactsApp\contactsAppComponent.js" />
     <Content Include="App\ContactsList\contactsListComponent.html" />
     <Content Include="App\ContactsList\contactsListComponent.js" />
+    <Content Include="App\NewContact\contactService.js" />
     <Content Include="App\NewContact\newContactComponent.html" />
     <Content Include="App\NewContact\newContactComponent.js" />
     <Content Include="Content\bootstrap.css" />
@@ -240,10 +241,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Contacts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

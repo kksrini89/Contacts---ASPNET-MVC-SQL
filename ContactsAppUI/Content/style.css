@@ -3,6 +3,11 @@
     font-family: 'Ubuntu Mono', sans-serif;
 }
 
+.app-footer {
+    bottom: 0;
+    position: fixed;
+}
+
 /*Hides the input spinner icons on Number field*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -10,5 +15,5 @@ input::-webkit-inner-spin-button {
 }
 
 #newContact-section {
-    padding: 5%;
+    padding-top: 5%;
 }
