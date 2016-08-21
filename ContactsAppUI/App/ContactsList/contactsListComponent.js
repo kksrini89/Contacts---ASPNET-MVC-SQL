@@ -12,7 +12,6 @@
         model.deleteContact = function (id) {
             contactService.deleteContact(id);
         }
-        //model.contacts = contactService.getContacts();
     }];
     app.component('contactsList', {
         templateUrl: '/App/ContactsList/contactsListComponent.html',

@@ -90,7 +90,10 @@ namespace ContactsAPI.Repository
                             contact.State = (string)dataReader["City"];
                             contact.Country = (string)dataReader["State"];
                             contact.Street = (string)dataReader["Country"];
-                            contactsList.Add(contact);
+                            if (!string.IsNullOrEmpty(contact.Name) && !string.IsNullOrEmpty(contact.MobileNumber.ToString()) && !string.IsNullOrEmpty(contact.Relationship))
+                            {
+                                contactsList.Add(contact);
+                            }                            
                         }
                     }
                 }

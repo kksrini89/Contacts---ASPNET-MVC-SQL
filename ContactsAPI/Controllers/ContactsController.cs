@@ -1,6 +1,8 @@
 ﻿using ContactsAPI.Models;
 using ContactsAPI.Repository;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace ContactsAPI.Controllers
@@ -15,19 +17,24 @@ namespace ContactsAPI.Controllers
         // GET api/contact
         [Route("getall")]
         [HttpGet]
-        public IEnumerable<Contact> Get()
+        public IHttpActionResult Get()
         {
             repository = new ContactRepository();
-            return repository.GetContacts();
+            return Ok(repository.GetContacts());
         }
 
         // GET api/contact/5
         [Route("get/{id}")]
         [HttpGet]
-        public Contact Get(int id)
+        public IHttpActionResult Get(int id)
         {
             repository = new ContactRepository();
-            return repository.GetContact(id);
+            if (id == 0)
+            {
+                var message = new HttpResponseMessage(HttpStatusCode.NotFound) { Content = new StringContent("Issue with Passed Id Parameter.") };
+                throw new HttpResponseException(message);
+            }
+            return Ok(repository.GetContact(id));
         }
 
         // POST api/contact
@@ -50,7 +57,7 @@ namespace ContactsAPI.Controllers
 
         // DELETE api/contact/5
         [Route("delete/{id}")]
-        [HttpGet,HttpDelete]
+        [HttpGet, HttpDelete]
         public void Delete(int id)
         {
             repository = new ContactRepository();

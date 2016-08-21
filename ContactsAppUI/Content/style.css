@@ -1,11 +1,20 @@
 ﻿body {
     padding: 70px;
-    font-family: 'Ubuntu Mono', sans-serif !important;
+    background-color: #febae5;
+}
+
+* {
+    font-family: 'Ubuntu Mono' !important;
 }
 
 .app-footer {
+    width: 100%;
+    padding: 5px 0 0 10px;
     bottom: 0;
+    left: 0;
     position: fixed;
+    background-color: gray;
+    color: #FFF;
 }
 
 /*Hides the input spinner icons on Number field*/
@@ -16,4 +25,44 @@ input::-webkit-inner-spin-button {
 
 #newContact-section {
     padding-top: 5%;
+}
+
+.contact-container {
+    margin-top: 50px;
+    width: 75%;
+}
+
+    .contact-container > #searchContactForm {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+.contact-list-container {
+    text-align: center;
+    display: inline;
+}
+
+    .contact-list-container span {
+        display: block;
+    }
+
+    .contact-list-container > .single-contact {
+        width: 15%;
+        padding: 5px;
+        margin: 5px;
+        display: inline-block;
+        border: 1px solid #1792e5;
+        background-color: burlywood;
+        transition: all 0.1s ease-in-out;
+    }
+
+        .contact-list-container > .single-contact :hover {
+            cursor: auto;
+            transform: scale(1,2);
+        }
+
+.single-contact > .contact-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
