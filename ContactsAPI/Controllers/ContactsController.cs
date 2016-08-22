@@ -23,6 +23,22 @@ namespace ContactsAPI.Controllers
             return Ok(repository.GetContacts());
         }
 
+        [Route("get/{name}")]
+        [HttpGet]
+        public IHttpActionResult Get(string name)
+        {
+            repository = new ContactRepository();
+            if (string.IsNullOrEmpty(name))
+            {
+                var message = new HttpResponseMessage(HttpStatusCode.BadRequest)
+                {
+                    Content = new StringContent("Search Name can not be empty")
+                };
+                throw new HttpResponseException(message);
+            }
+            return Ok(repository.GetContact(name));
+        }
+
         // GET api/contact/5
         [Route("get/{id}")]
         [HttpGet]

@@ -24,6 +24,39 @@ namespace ContactsAPI.Repository
 
         #region Methods
 
+        public Contact GetContact(string name)
+        {
+            try
+            {
+                var contact = new Contact();
+                using (connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    command = new SqlCommand("SELECT * FROM dbo.Contact WHERE Name = " + name, connection);
+                    dataReader = command.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        while (dataReader.Read())
+                        {
+                            contact.Id = Convert.ToInt32(dataReader["Id"]);
+                            contact.Name = Convert.ToString(dataReader["Name"]);
+                            contact.MobileNumber = Convert.ToInt64(dataReader["Mobile"]);
+                            contact.Relationship = Convert.ToString(dataReader["Relationship"]);
+                            contact.Street = Convert.ToString(dataReader["Street"]);
+                            contact.City = Convert.ToString(dataReader["City"]);
+                            contact.State = Convert.ToString(dataReader["State"]);
+                            contact.Country = Convert.ToString(dataReader["Country"]);
+                        }
+                    }
+                }
+                return contact;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+
         /// <summary>
         /// Get a contact for the given Id
         /// </summary>
@@ -93,7 +126,7 @@ namespace ContactsAPI.Repository
                             if (!string.IsNullOrEmpty(contact.Name) && !string.IsNullOrEmpty(contact.MobileNumber.ToString()) && !string.IsNullOrEmpty(contact.Relationship))
                             {
                                 contactsList.Add(contact);
-                            }                            
+                            }
                         }
                     }
                 }
