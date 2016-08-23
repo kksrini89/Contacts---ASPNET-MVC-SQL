@@ -10,8 +10,13 @@
             //    return data;
             //}, function (error, status, config) { console.log(error + '--' + status) });
         }
-        contact.search = function (id) {
-            return $http.get(url + 'api/contact/get', id);
+        contact.search = function (name) {
+            return $http({
+                method: 'GET',
+                url: url + 'api/contact/search',
+                data: { name: name }
+            });
+            //return $http.get(url + 'api/contact/search', name);
         }
         contact.saveContact = function (newContact) {
             return $http.post(url + 'api/contact/save', newContact);

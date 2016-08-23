@@ -24,15 +24,16 @@ namespace ContactsAPI.Repository
 
         #region Methods
 
-        public Contact GetContact(string name)
+        public IEnumerable<Contact> GetContact(string name)
         {
             try
             {
+                var contacts = new List<Contact>();
                 var contact = new Contact();
                 using (connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    command = new SqlCommand("SELECT * FROM dbo.Contact WHERE Name = " + name, connection);
+                    command = new SqlCommand("SELECT * FROM dbo.Contact WHERE Name LIKE '" + name + "%'", connection);
                     dataReader = command.ExecuteReader();
                     if (dataReader.HasRows)
                     {
@@ -46,13 +47,14 @@ namespace ContactsAPI.Repository
                             contact.City = Convert.ToString(dataReader["City"]);
                             contact.State = Convert.ToString(dataReader["State"]);
                             contact.Country = Convert.ToString(dataReader["Country"]);
+                            contacts.Add(contact);
                         }
                     }
                 }
-                return contact;
+                return contacts;
             }
             catch (Exception)
-            {                
+            {
                 throw;
             }
         }
