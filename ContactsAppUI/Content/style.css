@@ -34,7 +34,7 @@ input::-webkit-inner-spin-button {
 
     .contact-container > #searchContactForm {
         margin-bottom: 20px;
-        text-align: left;
+        /*text-align: left;*/
     }
 
 .contact-list-container {

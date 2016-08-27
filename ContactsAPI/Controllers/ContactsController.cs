@@ -23,8 +23,8 @@ namespace ContactsAPI.Controllers
             return Ok(repository.GetContacts());
         }
 
-        [Route("search/{name:alpha}")]
         [HttpGet]
+        [Route("search/{name:alpha}")]        
         public IHttpActionResult Get(string name)
         {
             repository = new ContactRepository();
@@ -40,8 +40,8 @@ namespace ContactsAPI.Controllers
         }
 
         // GET api/contact/5
-        [Route("get/{id:int}")]
         [HttpGet]
+        [Route("get/{id:int}")]        
         public IHttpActionResult Get(int id)
         {
             repository = new ContactRepository();

@@ -1,7 +1,10 @@
 ﻿<div class="contact-container">
-    <form id="searchContactForm" ng-submit="model.search();">
-        <input type="text" placeholder="Search Contact Name" ng-model="model.searchName"/>
-        <input type="submit" value="Search" />
+    <form id="searchContactForm" ng-submit="model.search(model.searchName);">
+        <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="Search Contact Name" ng-model="model.searchName" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="Search" />
+
     </form>
 
     <div ng-repeat="item in  model.contacts track by $index" class="contact-list-container">

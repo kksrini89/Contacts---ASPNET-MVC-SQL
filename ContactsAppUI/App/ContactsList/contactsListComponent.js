@@ -4,6 +4,7 @@
     var controller = ['contactService', function (contactService) {
         var model = this;
         model.searchName = '';
+        var isContactsAvailable = true;
         contactService.getContacts().then(function (result) {
             if (result.data !== null)
                 model.contacts = result.data;
@@ -13,9 +14,15 @@
         model.deleteContact = function (id) {
             contactService.deleteContact(id);
         }
-        model.search = function (name) {
-            contactService.search(name).then(function (result) {
-                console.log(result);
+
+        model.search = function (searchName) {
+            contactService.search(searchName).then(function (result) {
+                var filteredContacts = result.data;
+                if (filteredContacts !== null && filteredContacts.length > 0) {
+                    angular.copy(filteredContacts, model.contacts);
+                } else {
+                    isContactsAvailable = false;
+                }
             }, function (error) {
                 console.log(error);
             });
